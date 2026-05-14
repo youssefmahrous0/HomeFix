@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+/* .row{
+  @apply flex flex-wrap
+} */
+
+
+
+.raw {
+  @apply flex flex-wrap   ;
+}
+.raw > div {
+  @apply  px-3 py-3;
+}
+.active{
+  color: black;
+}
+.container{
+  @apply  mx-auto w-[90%] ;
+}
+/* select input */
+.css-tj5bde-Svg {
+    display: inline-block;
+    fill: currentColor;
+    line-height: 1;
+    stroke: currentColor;
+    stroke-width: 0;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* .containner{
+  @apply container w-[85%] mx-auto ;
+} */
+
+
+/* Login */
+
+/* 
+.login-fake-element{
+  position: relative;
+  text-align: center;
+  
+}
+.login-fake-element::after{
+  content: "";
+  position: absolute;
+  background-color: rgb(161, 153, 153);
+  width: 30%;
+  height: 2px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.login-fake-element::before{
+  content: "";
+  position: absolute;
+  background-color: rgb(161, 153, 153);
+  width: 30%;
+  height: 2px;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+} */
+ @layer components {
+  /* الكلاس الأساسي */
+  .login-fake-element {
+    @apply relative text-center;
+  }
+
+  .login-fake-element::before,
+  .login-fake-element::after {
+    content: "";
+    @apply absolute bg-gray-200 h-[0.5px];
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .login-fake-element::before {
+    left: 0;
+    width: 25%;
+  }
+
+  .login-fake-element::after {
+    right: 0;
+    width: 25%;
+  }
+
+  /* الميديا كويري للشاشات الكبيرة */
+  @media (min-width: 640px) { /* sm */
+    .login-fake-element::before,
+    .login-fake-element::after {
+      width: 32%;
+    }
+  }
+  @media (min-width: 768px) { /* md */
+    .login-fake-element::before,
+    .login-fake-element::after {
+      width: 35%;
+    }
+  }
+  @media (min-width: 1024px) { /* lg */
+    .login-fake-element::before,
+    .login-fake-element::after {
+      width: 25%;
+    }
+  }
+
+  @media (min-width: 1280px) { /* xl */
+    .login-fake-element::before,
+    .login-fake-element::after {
+      width: 30%;
+    }
+  }
+}
+
+
+/* إخفاء الـ Scrollbar من كل الموقع */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  transition: 0.3s;
+}
+
+/* لما الصفحة فيها scroll */
+html:active ::-webkit-scrollbar-thumb {
+  background-color: #9ca3af;
+}
