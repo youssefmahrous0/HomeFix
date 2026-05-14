@@ -2,8 +2,8 @@
   "name": "home-fix",
   "version": "1.0.0",
   "scripts": {
-    "backend": "cd Home_Fix && python app.py",
-    "frontend": "cd my-react-app-main && npm run dev",
+    "backend": "cd backend && python app.py",
+    "frontend": "cd Frontend && npm run dev",
     "dev": "concurrently \"npm run backend\" \"npm run frontend\""
   },
   "dependencies": {
