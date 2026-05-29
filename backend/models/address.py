@@ -1,4 +1,3 @@
-# models/address.py
 
 from extensions import db
 

@@ -33,7 +33,7 @@ from routes.admin.admin_reviews import admin_reviews_bp
 from routes.admin.admin_complaints import admin_complaints_bp
 from routes.admin.admin_ads import admin_ads 
 from routes.admin.admin_settings import admin_settings_bp
-
+from routes.chat_routes import chat_bp
 from utils.logger import logger
 from flask_cors import CORS
 from flask_dance.contrib.google import make_google_blueprint
@@ -119,6 +119,7 @@ app.register_blueprint(admin_reviews_bp)
 app.register_blueprint(admin_complaints_bp)
 app.register_blueprint(admin_ads)
 app.register_blueprint(admin_settings_bp)
+app.register_blueprint(chat_bp, url_prefix="/api")
 
 
 # ======================

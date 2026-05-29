@@ -3,6 +3,7 @@ import { login } from "../../api/auth"
 import { useNavigate } from "react-router-dom"
 import style from './Login.module.css'
 import { Link } from 'react-router-dom'
+import toast, { Toaster } from "react-hot-toast";
 
 
 export default function Login() {
@@ -43,8 +44,25 @@ const handleSubmit = async (e) => {
 }
    
   } catch (err) {
-    alert(err.response?.data?.message || "بيانات الدخول غير صحيحة");
-  } finally {
+
+  const errorMessage =
+    err.response?.data?.error ||
+    "بيانات الدخول غير صحيحة";
+
+  toast.error(errorMessage, {
+  duration: 3000,
+
+  style: {
+    direction: "rtl",
+    fontFamily: "Cairo",
+    fontSize: "16px",
+    borderRadius: "14px",
+    padding: "14px",
+  },
+});
+
+  }
+  finally {
     setLoading(false);
   }
 };
@@ -75,9 +93,8 @@ const handleFacebookLogin = () => {
 };
 
   return (
+    
     <section className='pt-25  '>
-
-
       <div className="container mx-auto ">
 
         <div className="flex flex-wrap items-center ">
@@ -204,7 +221,7 @@ const handleFacebookLogin = () => {
           <div className='w-full lg:w-1/2 md:pr-10 mt-7 lg:mt-0'>
             <div className=''>
               <h2 className=' text-4xl font-medium'>انضم الي <span className='block text-green-600'>آلاف العملاء السعداء</span></h2>
-              <p className='text-gray-500 mt-5 font-medium text-left  '>احصل علي خدمات منزليه احترافيه في دقائق</p>
+              <p className='text-gray-500 mt-5 font-medium text-right  '>احصل علي خدمات منزليه احترافيه في دقائق</p>
               <div className='mt-5'>
                 <div className='flex items-center mb-5'>
                   <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -239,7 +256,7 @@ const handleFacebookLogin = () => {
 
 
                   <span className='pr-5'>
-                    <h3 className=' text-lg font-medium text-left'>تقييمات موثوقة</h3>
+                    <h3 className=' text-lg font-medium '>تقييمات موثوقة</h3>
                     <p className='text-gray-500 font-medium'>اختر فنيك بناءً على تقييمات العملاء الحقيقية</p>
                   </span>
                 </div>
@@ -279,7 +296,11 @@ const handleFacebookLogin = () => {
           </div>
         </div>
       </div>
-      
+      <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
+
     </section>
 
   )

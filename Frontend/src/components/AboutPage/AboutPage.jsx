@@ -8,8 +8,6 @@ import AboutText from './../AboutText/AboutText';
 import AboutJoinTeam from './../AboutJoinTeam/AboutJoinTeam';
 
 
-
-
 export default function AboutPage() {
   return (
     <>

@@ -5,6 +5,7 @@ import './App.css'
 import axios from "axios";
 import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
+import { Toaster } from "react-hot-toast";
 import "react-toastify/dist/ReactToastify.css";
 import Home from './components/Home/Home';
 import LayOut from './components/LayOut/LayOut';
@@ -47,6 +48,7 @@ import AdminReview from './components/Admin/AdminReview';
 import AdminComplaints from './components/Admin/AdminComplaints';
 import AdminAdvertisements from './components/Admin/AdminAdvertisements';
 import AdminSettings from './components/Admin/AdminSettings';
+import ChatBot from "./components/ChatBot/ChatBot";
 
 
 let x = createBrowserRouter([
@@ -157,62 +159,20 @@ let x = createBrowserRouter([
     </AdminRoute>
   )
 },
+{
+  path: "*",
+  element: <Notfound />
+}
 ])
 function App() {
 
-  useEffect(() => {
-
-  const checkAuth = async () => {
-
-    const token = localStorage.getItem("token");
-
-    // لو في صفحة login متعملش check
-    if (
-      window.location.pathname === "/login" ||
-      window.location.pathname === "/register"
-    ) {
-      return;
-    }
-
-    // مفيش token
-    if (!token) {
-
-      localStorage.clear();
-
-      window.location.href = "/login";
-
-      return;
-    }
-
-    try {
-
-      await axios.get(
-        "http://localhost:5000/profile/",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-    } catch (error) {
-
-      localStorage.clear();
-
-      window.location.href = "/login";
-    }
-  };
-
-  checkAuth();
-
-}, []);
-
   return (
-    <>
-      <RouterProvider router={x}></RouterProvider>
-       <ToastContainer />
-      {/* باقي التطبيق */}
-    </>
+   <>
+  <RouterProvider router={x} />
+  <Toaster position="top-center" />
+  <ChatBot />
+  <ToastContainer />
+</>
   )
 }
 

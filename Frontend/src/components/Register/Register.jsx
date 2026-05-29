@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate  } from 'react-router-dom'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Register() {
 
+const navigate = useNavigate();
 const imageRef = useRef(null);
 const [accountType, setAccountType] = useState("USER");
 
@@ -55,21 +57,46 @@ const handleSubmit = async (e) => {
     const result = await res.json();
 
     if (!res.ok) {
-      alert(result.message || "حدث خطأ");
-    } else {
-      alert("تم إنشاء الحساب بنجاح");
 
-      
-      
-      setFormData({
-        name: "",
-        phone: "",
-        email: "",
-        password: "",
-        image: null,
-      });
-    }
+  toast.error(result.message || "حدث خطأ", {
+    duration: 3000,
+    style: {
+      direction: "rtl",
+      fontFamily: "Cairo",
+      fontSize: "16px",
+      borderRadius: "14px",
+      padding: "14px",
+    },
+  });
 
+} else {
+
+  toast.success("تم إنشاء الحساب بنجاح 🎉", {
+    duration: 3000,
+    style: {
+      direction: "rtl",
+      fontFamily: "Cairo",
+      fontSize: "16px",
+      borderRadius: "14px",
+      padding: "14px",
+      background: "#ECFDF5",
+      color: "#065F46",
+      border: "1px solid #10B981",
+    },
+  });
+
+  setFormData({
+    name: "",
+    phone: "",
+    email: "",
+    password: "",
+    image: null,
+    birthDate: ""
+  });
+  setTimeout(() => {
+  navigate("/login");
+}, 2000);
+}
   } catch (error) {
     console.log(error);
   }
@@ -352,25 +379,7 @@ const handleSubmit = async (e) => {
           </div>
         </div> 
     </section>
-
-
+<Toaster position="top-center" reverseOrder={false} />
   </>
   )
 }
-/**
- احصل على خدمات
-منزلية احترافية
-خدمات موثوقة من فنيين معتمدين
-فنيون موثوقون
-جميع الفنيين معتمدون ومدربون على أعلى مستوى من الاحترافية
-حجز سريع
-احجز خدمتك في دقائق واحصل على فني في نفس اليوم
-متابعة مستمرة
-تابع حالة طلبك وتواصل مع الفني بكل سهولة
-4.9
-1.2K+
-50K+
-تقييم المنصة
-فني محترف
-عميل سعيد
- */

@@ -47,6 +47,7 @@ useEffect(() => {
 const [current, setCurrent] = useState("");
 const [newPass, setNewPass] = useState("");
 const [confirm, setConfirm] = useState("");
+const [showDeleteModal, setShowDeleteModal] = useState(false);
 
 const changePassword = () => {
   if (newPass !== confirm) return alert("كلمة المرور غير متطابقة");
@@ -63,7 +64,6 @@ const changePassword = () => {
 };
 
   const deleteAccount = () => {
-  if (!window.confirm("متأكد؟")) return;
 
   axios.delete("http://localhost:5000/settings/delete", {
     headers: {
@@ -212,6 +212,7 @@ const changePassword = () => {
       </div>
 
       {/* منطقة الخطر */}
+            {/* منطقة الخطر */}
       <div className="bg-white rounded-2xl p-8 border border-red-300 shadow-sm">
         <h3 className="text-xl font-bold text-red-600 mb-4 text-right">
           منطقة الخطر
@@ -221,12 +222,60 @@ const changePassword = () => {
           حذف حسابك سيؤدي إلى فقدان جميع بياناتك وطلباتك بشكل نهائي. هذا الإجراء لا يمكن التراجع عنه.
         </p>
 
-        <button onClick={deleteAccount} className="w-full border border-red-500 text-red-500 py-3 rounded-lg hover:bg-red-50">
+        <button
+          onClick={() => setShowDeleteModal(true)}
+          className="w-full border border-red-500 text-red-500 py-3 rounded-lg hover:bg-red-50"
+        >
           حذف الحساب نهائيًا 🗑️
         </button>
       </div>
 
+      {/* DELETE MODAL */}
+      {showDeleteModal && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+
+          <div className="bg-white rounded-2xl p-8 w-[90%] max-w-md text-center shadow-2xl">
+
+            <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span className="text-4xl">🗑️</span>
+            </div>
+
+            <h3 className="text-2xl font-bold text-red-600 mb-3">
+              حذف الحساب
+            </h3>
+
+            <p className="text-gray-600 leading-7 mb-6">
+              هل أنت متأكد أنك تريد حذف حسابك؟
+              <br />
+              لن تتمكن من استرجاع البيانات مرة أخرى.
+            </p>
+
+            <div className="flex gap-3">
+
+              <button
+                onClick={() => setShowDeleteModal(false)}
+                className="flex-1 py-3 rounded-xl border border-gray-300 hover:bg-gray-100 transition"
+              >
+                إلغاء
+              </button>
+
+              <button
+                onClick={deleteAccount}
+                className="flex-1 py-3 rounded-xl bg-red-600 text-white hover:bg-red-700 transition"
+              >
+                نعم، حذف الحساب
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+      )}
+
     </div>
+
+
   );
 }
 
@@ -254,5 +303,6 @@ function Toggle({ label, state, setState }) {
       <span className="text-sm text-gray-700">{label}</span>
 
     </div>
+    
   );
 }

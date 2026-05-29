@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Footer.module.css";
 import { Link } from "react-router-dom";
 import emailIcon from "../../assets/email.png";
 import phoneIcon from "../../assets/telephone.png";
@@ -9,24 +10,24 @@ export default function Footer() {
       <footer className="bg-[#E5E7EB] pt-16 pb-6">  
 
       <div className="container mx-auto">
-        <div dir="ltr" className="grid grid-cols-4 gap-12 text-right">
+        <div dir="ltr" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-center md:text-right">
 
           {/* تواصل معنا */}
-          <div>
+         <div className={styles.contact}>
             <h3 className="font-bold text-lg mb-4">تواصل معنا</h3>
 
             <ul className="space-y-3 text-gray-600">
-              <li className="flex items-center justify-end gap-2">
+              <li className="flex items-center md:justify-end justify-center gap-2">
                 +966 50 123 4567
                 <img src={phoneIcon} alt="Phone" className="w-5 h-5" />
               </li>
 
-              <li className="flex items-center justify-end gap-2">
+              <li className="flex items-center md:justify-end justify-center gap-2">
                 info@homefix.com
                 <img src={emailIcon} alt="Email" className="w-5 h-5" />
               </li>
 
-              <li className="flex items-center justify-end gap-2">
+              <li className="flex items-center md:justify-end justify-center gap-2">
                 القاهرة، مصر
                 <img src={locationIcon} alt="Location" className="w-5 h-5" />
               </li>
@@ -34,20 +35,61 @@ export default function Footer() {
           </div>
 
           {/* خدماتنا */}
-          <div>
+          <div className={styles.services}>
             <h3 className="font-bold text-lg mb-4">خدماتنا</h3>
 
             <ul className="space-y-2 text-gray-600">
-              <li>كهرباء</li>
-              <li>سباكة</li>
-              <li>نجارة</li>
-              <li>دهانات</li>
-              <li>تكييف</li>
-            </ul>
+
+  <li>
+    <Link
+      to="/servicesPage?category=كهرباء"
+      className="hover:text-green-600 transition"
+    >
+      كهرباء
+    </Link>
+  </li>
+
+  <li>
+    <Link
+      to="/servicesPage?category=سباكة"
+      className="hover:text-green-600 transition"
+    >
+      سباكة
+    </Link>
+  </li>
+
+  <li>
+    <Link
+      to="/servicesPage?category=نجارة"
+      className="hover:text-green-600 transition"
+    >
+      نجارة
+    </Link>
+  </li>
+
+  <li>
+    <Link
+      to="/servicesPage?category=دهانات"
+      className="hover:text-green-600 transition"
+    >
+      دهانات
+    </Link>
+  </li>
+
+  <li>
+    <Link
+      to="/servicesPage?category=تكييف"
+      className="hover:text-green-600 transition"
+    >
+      تكييف
+    </Link>
+  </li>
+
+</ul>
           </div>
 
           {/* روابط سريعة */}
-          <div>
+          <div className={styles.links}>
             <h3 className="font-bold text-lg mb-4">روابط سريعة</h3>
 
             <ul className="space-y-2 text-gray-500">
@@ -84,8 +126,8 @@ export default function Footer() {
           </div>
 
           {/* logo */}
-          <div>
-            <div className="flex items-center gap-2 justify-end mb-3">
+          <div className={styles.logo}>
+            <div className="flex items-center gap-2 md:justify-end justify-center mb-3">
               <span className="text-2xl font-bold">HomeFix</span>
               <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white">
                 <img src={footerLogo} alt="HomeFix Logo" className="w-6 h-6" />
@@ -120,7 +162,7 @@ export default function Footer() {
 </div>
 
           <div>
-            © 2026 HomeFix. .جميع الحقوق محفوظة
+            © 2026 HomeFix .جميع الحقوق محفوظة
           </div>
 
         </div>

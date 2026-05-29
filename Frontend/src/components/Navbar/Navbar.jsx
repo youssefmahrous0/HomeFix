@@ -8,6 +8,7 @@ export default function Navbar() {
   const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const token = localStorage.getItem("token");
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -18,8 +19,25 @@ export default function Navbar() {
   return (
     <header className="w-full bg-white border-b border-gray-200">
       
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="container mx-auto px-6 py-4 flex items-center justify-between md:flex-row flex-row-reverse">
+         
+{/* mobile controls */}
+<div className="flex items-center gap-2 md:hidden">
 
+  {/* user menu */}
+  {isLoggedIn && (
+    <UserMenu setIsLoggedIn={setIsLoggedIn} />
+  )}
+
+  {/* menu button */}
+  <button
+    onClick={() => setMenuOpen(!menuOpen)}
+    className="text-3xl text-gray-700"
+  >
+    {menuOpen ? "×" : "☰"}
+  </button>
+
+</div>
         
         {/* right - logo */}
 <Link to="/" className="flex items-center gap-2">
@@ -35,7 +53,6 @@ export default function Navbar() {
   </div>
 </Link>
 
-        {/* center - links */}
            {/* links */}
         <nav className="hidden md:flex items-center gap-8 text-gray-600">
 
@@ -102,9 +119,8 @@ export default function Navbar() {
 
 </nav>
 
-        {/* auth */}
        {/* left - auth buttons */}
-<div className="flex items-center gap-4">
+<div className="hidden md:flex items-center gap-4">
 
   {!isLoggedIn ? (
     <>
@@ -129,6 +145,62 @@ export default function Navbar() {
 </div>
 
       </div>
+{/* mobile menu */}
+{menuOpen && (
+  <div
+    className="
+      w-full
+      bg-white
+      md:hidden
+      border-t border-gray-200
+    "
+  >
+
+    {/* links */}
+    <div className="flex flex-col text-right p-5 gap-6 text-lg">
+
+      <Link to="/">الرئيسية</Link>
+      <Link to="/about">من نحن</Link>
+      <Link to="/ServicesPage">الخدمات</Link>
+      <Link to="/ServicesProviderPage">مقدمو الخدمات</Link>
+      <Link to="/contact">تواصل معنا</Link>
+
+    </div>
+
+    {/* auth */}
+    {/* auth */}
+<div className="p-4 border-t border-gray-200">
+
+  {!isLoggedIn ? (
+
+    <div className="flex flex-col gap-3">
+
+      <Link
+        to="/login"
+        className="border border-gray-300 py-3 rounded-lg text-center"
+      >
+        تسجيل الدخول
+      </Link>
+
+      <Link
+        to="/register"
+        className="bg-green-600 text-white py-3 rounded-lg text-center"
+      >
+        إنشاء حساب +
+      </Link>
+
+    </div>
+
+  ) : (
+
+    <UserMenu setIsLoggedIn={setIsLoggedIn} />
+
+  )}
+
+</div>
+  </div>
+)}
+
     </header>
   );
 }

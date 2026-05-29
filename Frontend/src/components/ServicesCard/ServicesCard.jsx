@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from "react-router-dom"
-// Icons
+import { useNavigate , useSearchParams  } from "react-router-dom"
+import { requireAuth } from "../../api/utils/auth";
 import plumbingIcon from "../../assets/Icon1.png"
 import electricityIcon from "../../assets/Icon2.png"
 import acIcon from "../../assets/Icon3.png"
@@ -10,10 +10,13 @@ import carpentryIcon from "../../assets/Icon6.png"
 import Electrical_appliance_maintenanceIcon from "../../assets/Icon7.png"
 import AluminumIcon from "../../assets/Icon8.png"
 
+
 export default function ServicesCard({ selectedCategory, sortType }) {
   const navigate = useNavigate()
   const [services, setServices] = useState([])
   const [loading, setLoading] = useState(true)
+  const [searchParams] = useSearchParams();
+  const categoryFromURL = searchParams.get("category");
 
   // 🎯 Map icons from DB
   const iconMap = {
@@ -37,7 +40,7 @@ export default function ServicesCard({ selectedCategory, sortType }) {
     })
     .catch(err => {
       console.error(err)
-      setServices([]) // 🔥 مهم
+      setServices([]) 
       setLoading(false)
     })
 }, [])
@@ -45,13 +48,13 @@ export default function ServicesCard({ selectedCategory, sortType }) {
   // 🎯 Filtering
   let filtered = Array.isArray(services) ? services : []
 
-  if (selectedCategory !== "الكل") {
-    filtered = services.filter(
-      service => service.category === selectedCategory
-    )
-  }
+ const activeCategory = categoryFromURL || selectedCategory
+if (activeCategory !== "الكل") {
+  filtered = services.filter(
+    service => service.category === activeCategory
+  )
+}
 
-  // 🎯 Sorting
   if (sortType === "rating") {
     filtered = [...filtered].sort((a, b) => b.rating - a.rating)
   }
@@ -112,10 +115,17 @@ export default function ServicesCard({ selectedCategory, sortType }) {
             </span>
           </div>
 
-          <button onClick={() => navigate(`/ServicesProviderPage?service=${service.name}`)} 
-          className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl transition">
-            عرض الفنيين
-          </button>
+          <button
+  onClick={() => {
+
+    if (!requireAuth(navigate)) return;
+
+    navigate(`/ServicesProviderPage?service=${service.name}`);
+  }}
+  className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl transition"
+>
+  عرض الفنيين
+</button>
 
         </div>
 

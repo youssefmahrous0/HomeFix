@@ -1,5 +1,7 @@
 import React, { useEffect, useState} from "react";
 import { useLocation , useNavigate } from "react-router-dom";
+import { requireAuth } from "../../api/utils/auth";
+
 
 
 export default function ServiceProviderList({ search, governorate , filters , sort ,setSort , selectedService }) {
@@ -239,14 +241,34 @@ className="bg-green-50 text-green-600 px-3 py-1 rounded-full text-sm"
 <div className="flex gap-3">
 
 <button
-  onClick={() => navigate(`/provider/${provider.id}`)}
+  onClick={() => {
+
+    if (!requireAuth()) {
+
+      navigate("/login");
+
+      return;
+    }
+
+    navigate(`/provider/${provider.id}`);
+  }}
   className="border px-4 py-2 rounded-lg"
 >
   عرض الملف
 </button>
 
 <button
-  onClick={() => navigate(`/booking/${provider.id}`)}
+  onClick={() => {
+
+    if (!requireAuth()) {
+
+      navigate("/login");
+
+      return;
+    }
+
+    navigate(`/booking/${provider.id}`);
+  }}
   className="bg-green-600 text-white px-6 py-2 rounded-lg"
 >
   احجز الآن

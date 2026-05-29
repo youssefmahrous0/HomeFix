@@ -12,7 +12,7 @@ profile_bp = Blueprint("profile", __name__, url_prefix="/profile")
 @profile_bp.route("/", methods=["GET"])
 @jwt_required()
 def get_profile():
-    user_id = int(get_jwt_identity())  # 👈 مهم
+    user_id = int(get_jwt_identity())  
 
     user = User.query.get(user_id)
 
@@ -24,7 +24,8 @@ def get_profile():
         "email": user.email,
         "phone": user.phone or "",
         "address": user.address or "",
-        "birth_date": str(user.birth_date) if user.birth_date else ""
+        "birth_date": str(user.birth_date) if user.birth_date else "",
+        "created_at": str(user.created_at) if user.created_at else ""
     })
 
 

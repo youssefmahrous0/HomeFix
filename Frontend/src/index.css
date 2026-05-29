@@ -1,22 +1,39 @@
 @import "tailwindcss";
 
-/* .row{
-  @apply flex flex-wrap
-} */
+*{
+  box-sizing: border-box;
+}
 
+html,
+body,
+#root{
+  width: 100%;
+  overflow-x: hidden;
+}
 
+img{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
 .raw {
-  @apply flex flex-wrap   ;
-}
-.raw > div {
-  @apply  px-3 py-3;
+  @apply flex flex-wrap gap-4;
 }
 .active{
   color: black;
 }
 .container{
-  @apply  mx-auto w-[90%] ;
+  @apply mx-auto w-[90%] max-w-[1400px];
+}
+
+.cards-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 20px;
+}
+.hero-title{
+  font-size: clamp(2rem,5vw,4rem);
 }
 /* select input */
 .css-tj5bde-Svg {
@@ -31,39 +48,6 @@
     transform: translateY(-50%);
 }
 
-/* .containner{
-  @apply container w-[85%] mx-auto ;
-} */
-
-
-/* Login */
-
-/* 
-.login-fake-element{
-  position: relative;
-  text-align: center;
-  
-}
-.login-fake-element::after{
-  content: "";
-  position: absolute;
-  background-color: rgb(161, 153, 153);
-  width: 30%;
-  height: 2px;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.login-fake-element::before{
-  content: "";
-  position: absolute;
-  background-color: rgb(161, 153, 153);
-  width: 30%;
-  height: 2px;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-} */
  @layer components {
   /* الكلاس الأساسي */
   .login-fake-element {
@@ -124,11 +108,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: transparent;
-  transition: 0.3s;
-}
-
-/* لما الصفحة فيها scroll */
-html:active ::-webkit-scrollbar-thumb {
   background-color: #9ca3af;
+  border-radius: 999px;
+  transition: 0.3s;
 }

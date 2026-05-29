@@ -20,7 +20,7 @@ export default function CallToAction() {
         </Link>
 
         <Link
-          to="/providers"
+          to="/ServicesProviderPage"
           className="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-green-600 transition"
         >
           تصفح مقدمي الخدمات

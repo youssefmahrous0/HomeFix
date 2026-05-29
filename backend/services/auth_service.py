@@ -125,7 +125,7 @@ def login_user(data):
     # بيانات غلط
     if not user or not check_password(password, user.password_hash):
         return {
-            "error": "Invalid credentials"
+            "error": "كلمة المرور أو البريد الإلكتروني غير صحيحة"
         }, 401
 
     # الحساب موقوف

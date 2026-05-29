@@ -4,63 +4,90 @@ export default function HowItWorksStep() {
   return <>
   {/* كيف يعمل HomeFix؟ */}
 
-    <section className='py-12 m  '>
-      {/* header */}
-      <div className='text-center  mb-12 '>
-        <h2 className='font-bold text-2xl mb-5'>كيف يعمل HomeFix؟</h2>
-        <p className='text-gray-600 font-medium'>احصل على الخدمة التي تحتاجها في 4 خطوات بسيطة</p>
+    <section className="py-12">
+  
+  {/* header */}
+  <div className="text-center mb-12">
+    <h2 className="font-bold text-2xl md:text-4xl mb-5">
+      كيف يعمل HomeFix؟
+    </h2>
+
+    <p className="text-gray-600 font-medium text-sm md:text-lg">
+      احصل على الخدمة التي تحتاجها في 4 خطوات بسيطة
+    </p>
+  </div>
+
+  <div className="container mx-auto px-4">
+
+    {/* cards */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      {/* card 1 */}
+      <div className="text-center px-5 py-7 shadow-xl rounded-2xl">
+        <span className="fa-stack fa-2x mb-3">
+          <i className="fa-solid fa-circle fa-stack-2x text-green-600"></i>
+          <span className="fa-stack-1x fa-inverse">1</span>
+        </span>
+
+        <h3 className="font-bold text-lg my-3">
+          اختر الخدمة
+        </h3>
+
+        <p className="text-gray-600 font-medium">
+          تصفح الخدمات المتاحة واختر ما يناسبك
+        </p>
       </div>
 
-      <div className="container ">
+      {/* card 2 */}
+      <div className="text-center px-5 py-7 shadow-xl rounded-2xl">
+        <span className="fa-stack fa-2x mb-3">
+          <i className="fa-solid fa-circle fa-stack-2x text-green-600"></i>
+          <span className="fa-stack-1x fa-inverse">2</span>
+        </span>
 
-        <div className="  raw justify-center mt-12">
+        <h3 className="font-bold text-lg my-3">
+          احجز موعد
+        </h3>
 
-          <div className='w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 '>
-            <div className=' text-center  px-5 py-7 shadow-2xl rounded-2xl'>
-              <span class="fa-stack fa-2x mb-3 ">
-                <i class="fa-solid fa-circle fa-stack-2x text-green-600"></i>
-                <span class=" fa-stack-1x fa-inverse  ">1</span>
-              </span>
-              <h3 className='font-bold text-lg my-2 mr-4 text-end'>اختر الخدمة</h3>
-              <p className='text-gray-600 font-medium  mr-4'>تصفح الخدمات المتاحة واختر ما يناسبك</p>
-            </div>
-          </div>
-          <div className='w-full sm:w-1/2 lg:w-1/3 xl:w-1/4'>
-            <div className=' text-center  px-5 py-7 shadow-2xl rounded-2xl'>
-              <span class="fa-stack fa-2x mb-3 ">
-                <i class="fa-solid fa-circle fa-stack-2x text-green-600"></i>
-                <span class=" fa-stack-1x fa-inverse  ">2</span>
-              </span>
-              <h3 className=' font-bold text-lg my-2  '>احجز موعد</h3>
-              <p className='text-gray-600 font-medium '>حدد الوقت والتاريخ المناسب لك</p>
-            </div>
-          </div>
-          <div className='w-full sm:w-1/2 lg:w-1/3 xl:w-1/4'>
-            <div className=' text-center  px-5 py-7 shadow-2xl rounded-2xl'>
-              <span class="fa-stack fa-2x mb-3 ">
-                <i class="fa-solid fa-circle fa-stack-2x text-green-600"></i>
-                <span class=" fa-stack-1x fa-inverse  ">3</span>
-              </span>
-              <h3 className=' font-bold text-lg  my-2'>قيّم الخدمة</h3>
-              <p className='text-gray-600 font-medium '>شارك تجربتك وقيّم مقدم الخدمة</p>
-            </div>
-          </div>
-          <div className='w-full sm:w-1/2 lg:w-1/3 xl:w-1/4'>
-            <div className=' text-center  px-5 py-7 shadow-2xl rounded-2xl'>
-              <span class="fa-stack fa-2x mb-3 ">
-                <i class="fa-solid fa-circle fa-stack-2x text-green-600"></i>
-                <span class=" fa-stack-1x fa-inverse  ">4</span>
-              </span>
-               <h3 className=' font-bold text-lg text-end my-2'>استقبل الخدمة</h3>
-              <p className='text-gray-600 font-medium '>سيصل إليك مقدم الخدمة في الموعد المحدد</p>
-            </div>
-          </div>
-
-
-        </div>
-
+        <p className="text-gray-600 font-medium">
+          حدد الوقت والتاريخ المناسب لك
+        </p>
       </div>
 
-    </section>
+      {/* card 3 */}
+      <div className="text-center px-5 py-7 shadow-xl rounded-2xl">
+        <span className="fa-stack fa-2x mb-3">
+          <i className="fa-solid fa-circle fa-stack-2x text-green-600"></i>
+          <span className="fa-stack-1x fa-inverse">3</span>
+        </span>
+
+        <h3 className="font-bold text-lg my-3">
+          قيّم الخدمة
+        </h3>
+
+        <p className="text-gray-600 font-medium">
+          شارك تجربتك وقيّم مقدم الخدمة
+        </p>
+      </div>
+
+      {/* card 4 */}
+      <div className="text-center px-5 py-7 shadow-xl rounded-2xl">
+        <span className="fa-stack fa-2x mb-3">
+          <i className="fa-solid fa-circle fa-stack-2x text-green-600"></i>
+          <span className="fa-stack-1x fa-inverse">4</span>
+        </span>
+
+        <h3 className="font-bold text-lg my-3">
+          استقبل الخدمة
+        </h3>
+
+        <p className="text-gray-600 font-medium">
+          سيصل إليك مقدم الخدمة في الموعد المحدد
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
   </>
 }

@@ -3,7 +3,7 @@ import style from './AboutFeatures.module.css'
 export default function AboutFeatures() {
   return (
     <>
-      <section className='bg-gray-50 w-3/4 mx-auto  my-12'>
+      <section className='bg-gray-50 w-[95%] md:w-3/4 mx-auto my-12 py-10 rounded-2xl'>
         <div className="container">
           {/* header */}
           <div className='text-center  mb-12 '>
@@ -13,9 +13,9 @@ export default function AboutFeatures() {
             </p>
           </div>
           {/* features */}
-          <div className='raw '>
-            <div className='w-full sm:w-1/2 lg:w-1/3'>
-              <div className='text-center border border-gray-200 rounded-2xl p-5'>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div>
+              <div className='text-center border border-gray-200 rounded-2xl p-4 md:p-5'>
                 <svg className='block mx-auto' width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M0 16C0 7.16344 7.16344 0 16 0H48C56.8366 0 64 7.16344 64 16V48C64 56.8366 56.8366 64 48 64H16C7.16344 64 0 56.8366 0 48V16Z" fill="#00A63E" />
                   <path d="M21.334 34.6667C21.0817 34.6675 20.8343 34.5968 20.6206 34.4627C20.4069 34.3285 20.2356 34.1365 20.1267 33.9089C20.0178 33.6813 19.9757 33.4275 20.0053 33.1769C20.0349 32.9263 20.135 32.6893 20.294 32.4933L33.494 18.8933C33.593 18.7791 33.7279 18.7018 33.8766 18.6743C34.0253 18.6468 34.1789 18.6707 34.3123 18.742C34.4456 18.8133 34.5508 18.9279 34.6104 19.0668C34.6701 19.2058 34.6807 19.3609 34.6406 19.5067L32.0806 27.5333C32.0052 27.7354 31.9798 27.9527 32.0068 28.1667C32.0337 28.3807 32.1122 28.5849 32.2354 28.7619C32.3587 28.9389 32.523 29.0834 32.7143 29.1829C32.9057 29.2824 33.1183 29.334 33.334 29.3333H42.6673C42.9196 29.3325 43.167 29.4032 43.3807 29.5374C43.5944 29.6715 43.7657 29.8635 43.8746 30.0911C43.9835 30.3187 44.0256 30.5726 43.996 30.8231C43.9664 31.0737 43.8663 31.3107 43.7073 31.5067L30.5073 45.1067C30.4083 45.221 30.2734 45.2982 30.1247 45.3257C29.976 45.3532 29.8223 45.3293 29.689 45.258C29.5557 45.1867 29.4505 45.0722 29.3909 44.9332C29.3312 44.7943 29.3205 44.6392 29.3606 44.4933L31.9206 36.4667C31.9961 36.2646 32.0215 36.0473 31.9945 35.8333C31.9676 35.6194 31.8891 35.4151 31.7659 35.2381C31.6426 35.0611 31.4783 34.9167 31.2869 34.8171C31.0956 34.7176 30.883 34.666 30.6673 34.6667H21.334Z" stroke="white" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round" />
@@ -25,7 +25,7 @@ export default function AboutFeatures() {
 
               </div>
             </div>
-            <div className='w-full sm:w-1/2 lg:w-1/3'>
+            <div>
               <div className='text-center border border-gray-200 rounded-2xl p-5 '>
                 <svg className='mx-auto' width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M0 16C0 7.16344 7.16344 0 16 0H48C56.8366 0 64 7.16344 64 16V48C64 56.8366 56.8366 64 48 64H16C7.16344 64 0 56.8366 0 48V16Z" fill="#00A63E" />
@@ -37,7 +37,7 @@ export default function AboutFeatures() {
 
               </div>
             </div>
-            <div className='w-full sm:w-1/2 lg:w-1/3'>
+            <div>
               <div className='text-center border border-gray-200 rounded-2xl p-5 '>
                 <svg className='mx-auto' width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M0 16C0 7.16344 7.16344 0 16 0H48C56.8366 0 64 7.16344 64 16V48C64 56.8366 56.8366 64 48 64H16C7.16344 64 0 56.8366 0 48V16Z" fill="#00A63E" />

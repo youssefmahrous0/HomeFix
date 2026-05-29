@@ -1,4 +1,4 @@
-from flask import Blueprint, request , redirect, url_for
+from flask import Blueprint, request, redirect, url_for, session
 from services.auth_service import (
     forgot_password,
     register_user,
@@ -8,19 +8,16 @@ from services.auth_service import (
 )
 from middleware.auth_middleware import token_required
 from extensions import limiter
-from flask_dance.consumer import oauth_authorized
 from flask_dance.contrib.google import google
 from models.user import User
 from extensions import db
 import jwt
-from datetime import datetime, timedelta
-from flask import redirect, session
+from datetime import datetime, timedelta, timezone
 from flask_dance.contrib.facebook import facebook
 
 
 
 auth_bp = Blueprint("auth", __name__)
-# SECRET_KEY = "123456"
 
 # ================= REGISTER =================
 @auth_bp.route("/api/auth/register", methods=["POST"])
@@ -86,11 +83,9 @@ def profile(current_user):
 
 
 
-#====================== Google Login Blueprint ======================
+#====================== Google Login  ======================
 
-# ========================
-# JWT Token Generation
-# ========================
+
 SECRET_KEY = "secret"
 
 def generate_token(user):
@@ -102,18 +97,14 @@ def generate_token(user):
     return jwt.encode(payload, SECRET_KEY, algorithm="HS256")
 
 
-# =========================
-# redirect to google
-# =========================
+
 
 @auth_bp.route("/auth/google")
 def google_login():
     session.clear()
     return redirect(url_for("google.login", prompt="select_account"))
 
-# =========================
-# google callback
-# =========================
+
 @auth_bp.route("/google/callback")
 def google_callback():
 
@@ -131,23 +122,17 @@ def google_callback():
     name = info["name"]
     picture = info["picture"]
 
-    # ========================
-    # check existing user
-    # ========================
+    
     user = User.query.filter_by(email=email).first()
 
-    # ========================
-    # existing user → login
-    # ========================
+    
     if user:
         jwt_token = generate_token(user)
         return redirect(
             f"http://localhost:5173/social-success?token={jwt_token}"
         )
 
-    # ========================
-    # new user → register
-    # ========================
+    
     user = User(
     full_name=name,
     email=email,
@@ -168,15 +153,13 @@ def google_callback():
     
     
     
-#====================== Facebook Login Blueprint ======================
+#====================== Facebook Login  ======================
 @auth_bp.route("/auth/facebook")
 def facebook_login():
     session.clear()
     return redirect("/login/facebook")
 
-# =========================
-# facebook callback
-# =========================
+
 @auth_bp.route("/facebook/after-login")
 def facebook_after_login():
 
