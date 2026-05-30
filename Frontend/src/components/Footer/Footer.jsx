@@ -1,10 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import emailIcon from "../../assets/email.png";
 import phoneIcon from "../../assets/telephone.png";
 import locationIcon from "../../assets/location.png";
 import footerLogo from "../../assets/footer.png";
+import { requireAuth } from "../../api/utils/auth";
+
+
 export default function Footer() {
+  const navigate = useNavigate();
+
   return (
       <footer className="bg-[#E5E7EB] pt-16 pb-6">  
 
@@ -48,9 +53,19 @@ export default function Footer() {
     </li>
 
     <li>
-      <Link to="/search" className="hover:text-green-600">
-        بحث متقدم
-      </Link>
+      <Link
+  to="#"
+  onClick={(e) => {
+    e.preventDefault();
+
+    if (requireAuth(navigate)) {
+      navigate("/search");
+    }
+  }}
+  className="hover:text-green-600"
+>
+  بحث متقدم
+</Link>
     </li>
   </ul>
 </div>

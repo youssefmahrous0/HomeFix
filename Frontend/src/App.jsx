@@ -50,6 +50,7 @@ import AdminAdvertisements from './components/Admin/AdminAdvertisements';
 import AdminSettings from './components/Admin/AdminSettings';
 import ChatBot from "./components/ChatBot/ChatBot";
 import FAQPage from './components/Footer/FAQ';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 
 
@@ -77,7 +78,7 @@ let x = createBrowserRouter([
       { path: "/booking-success/:id", element: <BookingSuccess /> },
       { path: "/booking-details/:id", element: <BookingDetails /> },
       { path:"/tracking/:id" , element:<TrackingPage /> },
-      { path:"/search" , element:<SearchPage  /> },
+      { path:"/search" , element:(<ProtectedRoute><SearchPage  /></ProtectedRoute>) },
       { path: "/favorites", element: <Favorites /> },
       { path: "/notifications", element: <Notifications /> },
       { path: "/terms", element: <TermsPage />},
