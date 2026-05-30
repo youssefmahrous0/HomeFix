@@ -3,9 +3,7 @@ import { useState } from "react";
 export default function ChatBot() {
 
   const [isOpen, setIsOpen] = useState(false);
-
   const [message, setMessage] = useState("");
-
   const [messages, setMessages] = useState([
     {
       sender: "bot",
@@ -31,16 +29,17 @@ export default function ChatBot() {
 
     try {
 
+      const token = localStorage.getItem("token");
       const res = await fetch("http://localhost:5000/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
+       method: "POST",
+       headers: {
+         "Content-Type": "application/json",
+         "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
-          message: currentMessage,
-          session_id: "user_1"
-        })
-      });
+        message: currentMessage
+         })
+       });
 
       const data = await res.json();
       console.log(data);

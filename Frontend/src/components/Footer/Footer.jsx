@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./Footer.module.css";
 import { Link } from "react-router-dom";
 import emailIcon from "../../assets/email.png";
 import phoneIcon from "../../assets/telephone.png";
@@ -13,7 +12,7 @@ export default function Footer() {
         <div dir="ltr" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-center md:text-right">
 
           {/* تواصل معنا */}
-         <div className={styles.contact}>
+         <div>
             <h3 className="font-bold text-lg mb-4">تواصل معنا</h3>
 
             <ul className="space-y-3 text-gray-600">
@@ -34,62 +33,40 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* خدماتنا */}
-          <div className={styles.services}>
-            <h3 className="font-bold text-lg mb-4">خدماتنا</h3>
 
-            <ul className="space-y-2 text-gray-600">
+ {/*مساعدة ودعم */}
+ 
+<div>
+  <h3 className="font-bold text-lg mb-4">المساعدة والدعم</h3>
 
-  <li>
-    <Link
-      to="/servicesPage?category=كهرباء"
-      className="hover:text-green-600 transition"
-    >
-      كهرباء
-    </Link>
-  </li>
+  <ul className="space-y-2 text-gray-500">
+    <li>
+      <Link to="/faq" className="hover:text-green-600">
+        الأسئلة الشائعة
+      </Link>
+    </li>
 
-  <li>
-    <Link
-      to="/servicesPage?category=سباكة"
-      className="hover:text-green-600 transition"
-    >
-      سباكة
-    </Link>
-  </li>
+    <li>
+      <Link to="/terms" className="hover:text-green-600">
+        الشروط والأحكام
+      </Link>
+    </li>
 
-  <li>
-    <Link
-      to="/servicesPage?category=نجارة"
-      className="hover:text-green-600 transition"
-    >
-      نجارة
-    </Link>
-  </li>
+    <li>
+      <Link to="/privacy" className="hover:text-green-600">
+        سياسة الخصوصية
+      </Link>
+    </li>
 
-  <li>
-    <Link
-      to="/servicesPage?category=دهانات"
-      className="hover:text-green-600 transition"
-    >
-      دهانات
-    </Link>
-  </li>
-
-  <li>
-    <Link
-      to="/servicesPage?category=تكييف"
-      className="hover:text-green-600 transition"
-    >
-      تكييف
-    </Link>
-  </li>
-
-</ul>
-          </div>
-
+    <li>
+      <Link to="/search" className="hover:text-green-600">
+        بحث متقدم
+      </Link>
+    </li>
+  </ul>
+</div>
           {/* روابط سريعة */}
-          <div className={styles.links}>
+          <div>
             <h3 className="font-bold text-lg mb-4">روابط سريعة</h3>
 
             <ul className="space-y-2 text-gray-500">
@@ -126,7 +103,7 @@ export default function Footer() {
           </div>
 
           {/* logo */}
-          <div className={styles.logo}>
+          <div>
             <div className="flex items-center gap-2 md:justify-end justify-center mb-3">
               <span className="text-2xl font-bold">HomeFix</span>
               <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white">
@@ -141,31 +118,20 @@ export default function Footer() {
 
 
         {/* bottom */}
-        <div dir="ltr" className="border-t border-gray-300 mt-12 pt-6 flex justify-between text-gray-600">
+        <div
+  dir="rtl"
+  className="border-t border-gray-300 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center gap-4"
+>
+  <div>
+    جميع الحقوق محفوظة © 2026 HomeFix.
+  </div>
 
-          <div className="flex gap-6">
-
-  <Link
-    to="/terms"
-    className="hover:text-green-600 transition"
-  >
-    الشروط والأحكام
-  </Link>
-
-  <Link
-    to="/privacy"
-    className="hover:text-green-600 transition"
-  >
-    سياسة الخصوصية
-  </Link>
-
+  <div className="flex gap-6">
+    <Link to="/privacy">سياسة الخصوصية</Link>
+    <Link to="/terms">الشروط والأحكام</Link>
+    <Link to="/faq">الأسئلة الشائعة</Link>
+  </div>
 </div>
-
-          <div>
-            © 2026 HomeFix .جميع الحقوق محفوظة
-          </div>
-
-        </div>
 
       </div>
     </footer>

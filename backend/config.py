@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     OPENROUTER_API_KEY: str = ""
     ANTHROPIC_API_KEY: str = ""
     COHERE_API_KEY: str = ""
+    JWT_SECRET: str = "secret"
     OPENROUTER_MODEL: str = "openai/gpt-4o-mini"
     CLAUDE_MODEL: str = "claude-3-5-sonnet-20241022"
     COHERE_MODEL: str = "command-r-plus"

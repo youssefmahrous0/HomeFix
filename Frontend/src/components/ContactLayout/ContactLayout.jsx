@@ -9,19 +9,22 @@ export default function ContactLayout() {
 
     <>
       <section>
-        <div className="container">
-          <div className="raw">
-            <div className='w-full lg:w-2/3'>
-              <ContactForm />
-            </div>
-            <div className='w-full lg:w-1/3'  >
-              <ContactInfoCard />
-              <ContactWorkingHours />
-              <ContactSocialLinks />
-            </div>
-          </div>
-        </div>
-      </section>
+  <div className="container">
+    <div className="flex flex-col lg:flex-row-reverse gap-6">
+      
+      <div className="w-full lg:w-1/3">
+        <ContactInfoCard />
+        <ContactWorkingHours />
+        <ContactSocialLinks />
+      </div>
+
+      <div className="w-full lg:w-2/3">
+        <ContactForm />
+      </div>
+
+    </div>
+  </div>
+</section>
     </>
     
   )

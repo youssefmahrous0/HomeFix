@@ -168,8 +168,8 @@ async def process_chat(
     session_id: Optional[str] = None,
     location: Optional[str] = None,
     history: Optional[List[Dict]] = None,
+    user: Optional[Dict] = None,
 ) -> Dict[str, Any]:
-
     session_id, session_history = get_or_create_session(session_id)
 
     # Merge provided history into session
@@ -180,11 +180,79 @@ async def process_chat(
 
     # Add location context to message if provided
     user_message = message
+    protected_actions = [
+    "احجز",
+    "حجز",
+    "طلباتي",
+    "طلباتي الحالية",
+    "الغي الطلب",
+    "إلغاء الطلب",
+    "عنواني",
+    "عناويني",
+    "بطاقتي",
+    "بطاقاتي",
+    "المفضلة"
+]
+
+    if not user:
+       if any(word in message for word in protected_actions):
+         return {
+            "reply": "يجب تسجيل الدخول أولاً لإتمام هذه العملية.",
+            "session_id": session_id,
+            "detected_service": None,
+            "emergency_level": "none",
+            "emergency_message": None,
+            "price_estimate": None
+        }
     if location:
         user_message = f"[الموقع: {location}]\n{message}"
+    user_context = ""
+    if user:
+     user_context = f"""
+   المستخدم مسجل دخول.
+
+الاسم: {user.full_name}
+البريد: {user.email}
+الهاتف: {user.phone}
+
+إذا طلب المستخدم:
+- طلباته
+- حجوزاته
+- عنوانه
+
+استخدم بيانات حسابه.
+
+نادِ المستخدم باسمه عند الحاجة.
+"""
+    else:
+     user_context = """
+المستخدم غير مسجل دخول.
+
+أي عملية تتعلق بـ:
+- حجز خدمة
+- متابعة طلب
+- إلغاء طلب
+- إضافة عنوان
+- إضافة بطاقة
+- المفضلة
+
+يجب أن تطلب منه تسجيل الدخول أولاً.
+
+لا تنفذ أي إجراء قبل تسجيل الدخول.
+"""
 
     # Build messages for API
-    api_messages = session_history + [{"role": "user", "content": user_message}]
+    api_messages = [
+    {
+        "role": "system",
+        "content": user_context
+    }
+] + session_history + [
+    {
+        "role": "user",
+        "content": user_message
+    }
+]
 
     # Run detections in parallel
     import asyncio

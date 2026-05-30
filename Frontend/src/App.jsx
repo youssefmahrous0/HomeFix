@@ -49,6 +49,8 @@ import AdminComplaints from './components/Admin/AdminComplaints';
 import AdminAdvertisements from './components/Admin/AdminAdvertisements';
 import AdminSettings from './components/Admin/AdminSettings';
 import ChatBot from "./components/ChatBot/ChatBot";
+import FAQPage from './components/Footer/FAQ';
+
 
 
 let x = createBrowserRouter([
@@ -80,6 +82,7 @@ let x = createBrowserRouter([
       { path: "/notifications", element: <Notifications /> },
       { path: "/terms", element: <TermsPage />},
       { path: "/privacy", element: <PrivacyPage  />},
+      { path: "/faq", element: <FAQPage /> },
       { path: "/ServiceOrderDetailsPage/:id", element: <OrderDetailsPage /> },
       
       { path: "*", element: <Notfound /> }
