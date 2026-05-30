@@ -7,7 +7,6 @@ import logging
 import uuid
 from typing import Optional, List, Dict, Any
 from datetime import datetime
-
 from config import settings
 from prompts import SYSTEM_PROMPT, EMERGENCY_DETECTION_PROMPT, SERVICE_DETECTION_PROMPT, PRICE_ESTIMATION_PROMPT
 from models import EmergencyLevel, ServiceCategory
@@ -61,17 +60,27 @@ async def _call_claude(messages: List[Dict], system: str = SYSTEM_PROMPT) -> str
 # ─── OpenAI Provider ──────────────────────────────────────────────────────────
 async def _call_openai(messages: List[Dict], system: str = SYSTEM_PROMPT) -> str:
     try:
-        import openai
-        client = openai.AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
-        full_messages = [{"role": "system", "content": system}] + messages
+        from openai import AsyncOpenAI
+
+        client = AsyncOpenAI(
+            api_key=settings.OPENROUTER_API_KEY,
+            base_url="https://openrouter.ai/api/v1",
+        )
+
+        full_messages = [
+            {"role": "system", "content": system}
+        ] + messages
+
         response = await client.chat.completions.create(
-            model=settings.OPENAI_MODEL,
+            model=settings.OPENROUTER_MODEL,
             messages=full_messages,
             max_tokens=settings.MAX_TOKENS,
         )
+
         return response.choices[0].message.content
+
     except Exception as e:
-        logger.error(f"OpenAI API error: {e}")
+        logger.error(f"OpenRouter API error: {e}")
         raise
 
 

@@ -4,10 +4,10 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
 
     AI_PROVIDER: str = "openai"
-    OPENAI_API_KEY: str = ""
+    OPENROUTER_API_KEY: str = ""
     ANTHROPIC_API_KEY: str = ""
     COHERE_API_KEY: str = ""
-    OPENAI_MODEL: str = "gpt-4o-mini"
+    OPENROUTER_MODEL: str = "openai/gpt-4o-mini"
     CLAUDE_MODEL: str = "claude-3-5-sonnet-20241022"
     COHERE_MODEL: str = "command-r-plus"
     MAX_TOKENS: int = 1024
