@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 export default function ServiceOrderDetailsPage() {
 
   const { id } = useParams();
@@ -469,34 +469,57 @@ export default function ServiceOrderDetailsPage() {
                 <button
   onClick={async () => {
 
-    try {
+  const result = await Swal.fire({
+    title: "هل تريد إلغاء الطلب؟",
+    text: "لا يمكن التراجع بعد الإلغاء",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "نعم، إلغاء الطلب",
+    cancelButtonText: "رجوع",
+    confirmButtonColor: "#ef4444",
+    cancelButtonColor: "#6b7280",
+  });
 
-      await axios.put(
-        `http://localhost:5000/cancel/${booking.id}`,
-        {},
-        {
-          headers: {
-            Authorization:
-              "Bearer " + localStorage.getItem("token"),
-          },
-        }
-      );
+  if (!result.isConfirmed) return;
 
-      alert("تم إلغاء الطلب بنجاح");
+  try {
 
-      navigate("/servicesProviderPage");
+    await axios.put(
+      `http://localhost:5000/cancel/${booking.id}`,
+      {},
+      {
+        headers: {
+          Authorization:
+            "Bearer " + localStorage.getItem("token"),
+        },
+      }
+    );
 
-    } catch (err) {
+    await Swal.fire({
+      icon: "success",
+      title: "تم إلغاء الطلب",
+      text: "تم إلغاء الطلب بنجاح",
+      confirmButtonText: "حسناً",
+      confirmButtonColor: "#16a34a",
+    });
 
-      console.log(err);
+    navigate("/servicesProviderPage");
 
-      alert("حدث خطأ أثناء إلغاء الطلب");
+  } catch (err) {
 
-    }
+    console.log(err);
 
-  }}
-  className="w-full border border-red-200 text-red-500 py-3 rounded-2xl font-medium hover:bg-red-50 transition"
->
+    Swal.fire({
+      icon: "error",
+      title: "حدث خطأ",
+      text: "فشل إلغاء الطلب",
+      confirmButtonText: "إغلاق",
+    });
+
+  }
+
+}}
+  className="w-full border border-red-200 text-red-500 py-3 rounded-2xl font-medium hover:bg-red-50 transition">
   إلغاء الطلب
 </button>
 

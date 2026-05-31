@@ -4,6 +4,7 @@ import axios from "axios";
 import { io } from "socket.io-client";
 import { MapContainer, TileLayer, Marker, Polyline , useMap} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import Swal from "sweetalert2";
 
 function RecenterMap({ lat, lng }) {
   const map = useMap();
@@ -449,37 +450,51 @@ useEffect(() => {
     <button
   onClick={async () => {
 
-    const confirmCancel = window.confirm(
-      "هل أنت متأكد من إلغاء الطلب؟"
-    );
+    const result = await Swal.fire({
+  title: "هل تريد إلغاء الطلب؟",
+  text: "لا يمكن التراجع بعد الإلغاء",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonText: "نعم، إلغاء الطلب",
+  cancelButtonText: "رجوع",
+  confirmButtonColor: "#ef4444",
+  cancelButtonColor: "#6b7280",
+});
 
-    if (!confirmCancel) return;
+if (!result.isConfirmed) return;
 
     try {
-
-      await axios.put(
-        `http://localhost:5000/cancel/${id}`,
-        {},
-        {
-          headers: {
-            Authorization:
-              "Bearer " + localStorage.getItem("token"),
-          },
-        }
-      );
-
-      alert("تم إلغاء الطلب بنجاح");
-
-      // 🔥 تحويل بعد الإلغاء
-      navigate("/servicesProviderPage");
-
-    } catch (err) {
-
-      console.log(err);
-
-      alert("حدث خطأ أثناء الإلغاء");
-
+  await axios.put(
+    `http://localhost:5000/cancel/${id}`,
+    {},
+    {
+      headers: {
+        Authorization:
+          "Bearer " + localStorage.getItem("token"),
+      },
     }
+  );
+
+  await Swal.fire({
+    icon: "success",
+    title: "تم إلغاء الطلب",
+    text: "تم إلغاء الطلب بنجاح",
+    confirmButtonText: "حسناً",
+    confirmButtonColor: "#16a34a",
+  });
+
+  navigate("/servicesProviderPage");
+
+} catch (err) {
+  console.log(err);
+
+  Swal.fire({
+    icon: "error",
+    title: "حدث خطأ",
+    text: "فشل إلغاء الطلب",
+    confirmButtonText: "إغلاق",
+  });
+}
 
   }}
   className="border border-red-500 text-red-500 w-full py-2 rounded-lg"
