@@ -1,0 +1,8 @@
+Flask
+Flask-SQLAlchemy
+Flask-JWT-Extended
+Flask-SocketIO
+gunicorn
+eventlet
+pyodbc
+python-dotenv
