@@ -66,10 +66,7 @@ app.config["SECRET_KEY"] = "super-secret-key"  # 🔥 ده الحل
 # ======================
 # Config (الأول)
 # ======================
-app.config["SQLALCHEMY_DATABASE_URI"] = (
-"mssql+pyodbc://@DESKTOP-MFNVDCO\\SQLEXPRESS/Home_Fix?"
-"driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes"
-)
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 

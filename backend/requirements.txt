@@ -2,8 +2,10 @@ Flask
 Flask-SQLAlchemy
 Flask-JWT-Extended
 Flask-SocketIO
+Flask-Cors
+Flask-Dance
+Flask-Limiter
 gunicorn
 eventlet
-pyodbc
-psycopg2-binary
 python-dotenv
+psycopg2-binary
