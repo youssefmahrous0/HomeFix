@@ -79,6 +79,21 @@ app.config["JWT_HEADER_TYPE"] = "Bearer"
 # ======================
 # Extensions (بعد config)
 # ======================
+from models.user import User
+from models.provider import Provider
+from models.service import Service
+from models.category import Category
+from models.order import Order
+from models.Booking import Booking
+from models.address import Address
+from models.card import Card
+from models.favorite import Favorite
+from models.notification import Notification
+from models.complaint import Complaint
+from models.advertisement import Advertisement
+from models.admin_settings import AdminSettings
+from models.contact import Contact
+
 db.init_app(app)
 socketio.init_app(app)
 with app.app_context():
