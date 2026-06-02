@@ -5,7 +5,7 @@ import React, {
 
 import axios from "axios";
 
-import AdminSidebar from "../../components/admin/AdminSidebar";
+import AdminSidebar from "../../components/Admin/AdminSidebar";
 
 import {
   AlertCircle,
