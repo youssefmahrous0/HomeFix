@@ -53,7 +53,7 @@ export default function AdminDashboard() {
   const fetchDashboard = async () => {
     try {
       const res = await axios.get(
-        "homefix-production-0bc9.up.railway.app/api/admin/dashboard"
+        "https://homefix-production-0bc9.up.railway.app/api/admin/dashboard"
       );
 
       setData(res.data);

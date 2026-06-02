@@ -27,7 +27,7 @@ export default function NotificationsPage() {
   // =========================
   useEffect(() => {
     axios
-      .get("homefix-production-0bc9.up.railway.app/notifications", {
+      .get("https://homefix-production-0bc9.up.railway.app/notifications", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
@@ -40,7 +40,7 @@ export default function NotificationsPage() {
   // 🔥 SOCKET REALTIME
   // =========================
   useEffect(() => {
-    const socket = io("homefix-production-0bc9.up.railway.app");
+    const socket = io("https://homefix-production-0bc9.up.railway.app");
 
     const userId = localStorage.getItem("user_id");
     socket.emit("join", { user_id: userId });
@@ -65,7 +65,7 @@ export default function NotificationsPage() {
   // =========================
   const markRead = async (id) => {
     await axios.put(
-      `homefix-production-0bc9.up.railway.app/notifications/read/${id}`,
+      `https://homefix-production-0bc9.up.railway.app/notifications/read/${id}`,
       {},
       {
         headers: {
@@ -83,7 +83,7 @@ export default function NotificationsPage() {
   // ❌ DELETE
   // =========================
   const deleteNotif = async (id) => {
-    await axios.delete(`homefix-production-0bc9.up.railway.app/notifications/${id}`, {
+    await axios.delete(`https://homefix-production-0bc9.up.railway.app/notifications/${id}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },

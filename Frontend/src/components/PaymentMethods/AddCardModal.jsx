@@ -46,7 +46,7 @@ export default function AddCardModal({ onClose, refreshCards }) {
       }
 
       await axios.post(
-        "homefix-production-0bc9.up.railway.app/cards",
+        "https://homefix-production-0bc9.up.railway.app/cards",
         {
           payment_method_id: paymentMethod.id,
         },

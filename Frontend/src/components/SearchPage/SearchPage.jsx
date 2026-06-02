@@ -32,7 +32,7 @@ export default function SearchPage() {
   const handleSearch = async () => {
     try {
       const res = await axios.get(
-        `homefix-production-0bc9.up.railway.app/search?q=${query}`
+        `https://homefix-production-0bc9.up.railway.app/search?q=${query}`
       );
       setData(res.data);
     } catch (err) {
@@ -42,7 +42,7 @@ export default function SearchPage() {
 
   // 🟢 أول ما الصفحة تفتح → كل البيانات
   useEffect(() => {
-    axios.get("homefix-production-0bc9.up.railway.app/search")
+    axios.get("https://homefix-production-0bc9.up.railway.app/search")
       .then(res => setData(res.data));
   }, []);
 

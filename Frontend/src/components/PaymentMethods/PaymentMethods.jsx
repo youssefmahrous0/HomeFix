@@ -19,7 +19,7 @@ export default function PaymentMethods() {
     try {
       setLoading(true);
 
-      const res = await axios.get("homefix-production-0bc9.up.railway.app/cards", {
+      const res = await axios.get("https://homefix-production-0bc9.up.railway.app/cards", {
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -42,7 +42,7 @@ export default function PaymentMethods() {
   // ✅ تأكيد الحذف
   const confirmDelete = async () => {
     try {
-      await axios.delete(`homefix-production-0bc9.up.railway.app/cards/${deleteId}`, {
+      await axios.delete(`https://homefix-production-0bc9.up.railway.app/cards/${deleteId}`, {
         headers: {
           Authorization: "Bearer " + token,
         },

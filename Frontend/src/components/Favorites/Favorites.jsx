@@ -32,7 +32,7 @@ export default function Favorites() {
     const user = JSON.parse(localStorage.getItem("user"));
 
     axios
-      .get(`homefix-production-0bc9.up.railway.app/favorites/${user.id}`)
+      .get(`https://homefix-production-0bc9.up.railway.app/favorites/${user.id}`)
       .then((res) => {
         setProviders(res.data.providers);
       });

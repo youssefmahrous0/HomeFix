@@ -32,7 +32,7 @@ export default function ServicesCard({ selectedCategory, sortType }) {
 
   // 🔥 Fetch from backend
   useEffect(() => {
-  fetch("homefix-production-0bc9.up.railway.app/services/")
+  fetch("https://homefix-production-0bc9.up.railway.app/services/")
     .then(res => res.json())
     .then(data => {
       setServices(Array.isArray(data) ? data : [])

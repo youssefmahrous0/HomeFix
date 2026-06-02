@@ -26,7 +26,7 @@ export default function ResetPassword() {
 
   try {
     await axios.post(
-      "homefix-production-0bc9.up.railway.app/api/auth/reset-password",
+      "https://homefix-production-0bc9.up.railway.app/api/auth/reset-password",
       {
         token,
         password

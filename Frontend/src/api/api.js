@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "homefix-production-0bc9.up.railway.app",
+  baseURL: "https://homefix-production-0bc9.up.railway.app",
 });
 
 API.interceptors.request.use((req) => {

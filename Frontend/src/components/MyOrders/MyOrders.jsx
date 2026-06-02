@@ -7,7 +7,7 @@ function MyOrders() {
   const [filter, setFilter] = useState("all");
 
   useEffect(() => {
-    axios.get("homefix-production-0bc9.up.railway.app/my-orders", {
+    axios.get("https://homefix-production-0bc9.up.railway.app/my-orders", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
