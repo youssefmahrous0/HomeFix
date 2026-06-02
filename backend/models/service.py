@@ -24,7 +24,7 @@ class Service(db.Model):
     # =====================================
     # الحالة
     # =====================================
-    status = db.Column(db.NVARCHAR(50),  default="نشط")
+    status = db.Column(db.String(50),  default="نشط")
     
 
     # ✅ العلاقات (المهم)

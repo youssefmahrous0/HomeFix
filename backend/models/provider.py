@@ -16,14 +16,14 @@ class Provider(db.Model):
     skills = db.Column(db.Text)
     time = db.Column(db.String(50))
     bio = db.Column(db.Text)
-    availability = db.Column(db.NVARCHAR(100))
-    response_time = db.Column(db.NVARCHAR(100))
+    availability = db.Column(db.String(100))
+    response_time = db.Column(db.String(100))
     
     
     email = db.Column(db.String(120))
     phone = db.Column(db.String(20))
     is_verified = db.Column(db.Boolean,default=False)
-    status = db.Column(db.NVARCHAR(20),default="نشط")
+    status = db.Column(db.String(20),default="نشط")
     
     
     lat = db.Column(db.Float)

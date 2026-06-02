@@ -6,15 +6,15 @@ class Address(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
 
-    full_name = db.Column(db.NVARCHAR(100), nullable=False)
+    full_name = db.Column(db.String(100), nullable=False)
     phone = db.Column(db.String(20), nullable=False)
 
-    governorate = db.Column(db.NVARCHAR(100))
-    area = db.Column(db.NVARCHAR(100))
-    street = db.Column(db.NVARCHAR(200))
+    governorate = db.Column(db.String(100))
+    area = db.Column(db.String(100))
+    street = db.Column(db.String(200))
 
     building_number = db.Column(db.String(20))
-    floor = db.Column(db.NVARCHAR(20))
+    floor = db.Column(db.String(20))
     apartment_number = db.Column(db.String(20))
 
     address_type = db.Column(db.String(20), default="home")
