@@ -81,6 +81,8 @@ app.config["JWT_HEADER_TYPE"] = "Bearer"
 # ======================
 db.init_app(app)
 socketio.init_app(app)
+with app.app_context():
+    db.create_all()
 
 
 from flask_cors import CORS
