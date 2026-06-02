@@ -24,7 +24,7 @@ export default function AddressPage() {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://https://homefix-production-0bc9.up.railway.app/addresses", {
+    fetch("https://homefix-production-0bc9.up.railway.app/addresses", {
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -58,8 +58,8 @@ export default function AddressPage() {
     const token = localStorage.getItem("token");
 
     const url = editId
-      ? `http://https://homefix-production-0bc9.up.railway.app/addresses/${editId}`
-      : "http://https://homefix-production-0bc9.up.railway.app/addresses";
+      ? `https://homefix-production-0bc9.up.railway.app/addresses/${editId}`
+      : `https://homefix-production-0bc9.up.railway.app/addresses`;
 
     const method = editId ? "PUT" : "POST";
 
@@ -88,7 +88,7 @@ export default function AddressPage() {
   const handleDelete = async (id) => {
     const token = localStorage.getItem("token");
 
-    await fetch(`http://https://homefix-production-0bc9.up.railway.app/addresses/${id}`, {
+    await fetch(`https://homefix-production-0bc9.up.railway.app/addresses/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + token,

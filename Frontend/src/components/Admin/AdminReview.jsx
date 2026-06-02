@@ -15,7 +15,7 @@ import {
 import AdminSidebar from "./AdminSidebar";
 
 const API_URL =
-  "http://https://homefix-production-0bc9.up.railway.app/admin/reviews";
+  "https://homefix-production-0bc9.up.railway.app/admin/reviews";
 
 export default function AdminReviews() {
 

@@ -10,7 +10,7 @@ export default function Favorites() {
   const user = JSON.parse(localStorage.getItem("user"));
 
   // 🧠 احذف من السيرفر
-  await fetch("http://https://homefix-production-0bc9.up.railway.app/favorite/toggle", {
+  await fetch("https://homefix-production-0bc9.up.railway.app/favorite/toggle", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

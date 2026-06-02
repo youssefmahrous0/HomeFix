@@ -63,7 +63,7 @@ export default function AdminAds() {
     try {
 
       const res = await axios.get(
-        "http://https://homefix-production-0bc9.up.railway.app/admin/ads"
+        "https://homefix-production-0bc9.up.railway.app/admin/ads"
       );
 
       setAds(res.data.ads);
@@ -153,7 +153,7 @@ export default function AdminAds() {
   try {
 
     await axios.delete(
-      `http://https://homefix-production-0bc9.up.railway.app/admin/ads/${deleteAdId}`
+      `https://homefix-production-0bc9.up.railway.app/admin/ads/${deleteAdId}`
     );
 
     setDeleteAdId(null);
@@ -180,7 +180,7 @@ export default function AdminAds() {
       try {
 
         await axios.put(
-          `http://https://homefix-production-0bc9.up.railway.app/admin/ads/${item.id}`,
+          `https://homefix-production-0bc9.up.railway.app/admin/ads/${item.id}`,
           {
             status:
               item.status === "نشط"
@@ -238,7 +238,7 @@ const updateAd = async () => {
   try {
 
     await axios.put(
-      `http://https://homefix-production-0bc9.up.railway.app/admin/ads/${editAd.id}`,
+      `https://homefix-production-0bc9.up.railway.app/admin/ads/${editAd.id}`,
       editAd
     );
 
@@ -263,7 +263,7 @@ const createAd = async () => {
   try {
 
     await axios.post(
-      "http://https://homefix-production-0bc9.up.railway.app/admin/ads",
+      "https://homefix-production-0bc9.up.railway.app/admin/ads",
       {
         ...newAd,
         status: "نشط",

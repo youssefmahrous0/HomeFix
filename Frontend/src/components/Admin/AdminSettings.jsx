@@ -72,7 +72,7 @@ export default function SettingsDashboard() {
     try {
 
       const res = await axios.get(
-        "http://https://homefix-production-0bc9.up.railway.app/admin/settings"
+        "https://homefix-production-0bc9.up.railway.app/admin/settings"
       );
 
       if (res.data.settings) {
@@ -91,7 +91,7 @@ export default function SettingsDashboard() {
       setLoading(true);
 
       await axios.put(
-        "http://https://homefix-production-0bc9.up.railway.app/admin/settings",
+        "https://homefix-production-0bc9.up.railway.app/admin/settings",
         settings
       );
 

@@ -26,7 +26,7 @@ export default function Profile() {
   // ✅ GET PROFILE
   // =========================
   useEffect(() => {
-    fetch("http://https://homefix-production-0bc9.up.railway.app/profile/", {
+    fetch("https://homefix-production-0bc9.up.railway.app/profile/", {
       method: "GET",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
@@ -52,7 +52,7 @@ export default function Profile() {
   // ✅ UPDATE PROFILE
   // =========================
   const handleUpdate = () => {
-    fetch("http://https://homefix-production-0bc9.up.railway.app/profile/", {
+    fetch("https://homefix-production-0bc9.up.railway.app/profile/", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -8,7 +8,7 @@ import {
   X,
 } from "lucide-react";
 
-const API_URL = "http://https://homefix-production-0bc9.up.railway.app/admin/services";
+const API_URL = "https://homefix-production-0bc9.up.railway.app/admin/services";
 
 export default function AdminServices() {
 
@@ -85,7 +85,7 @@ export default function AdminServices() {
   try {
 
     const res = await fetch(
-      "http://https://homefix-production-0bc9.up.railway.app/admin/categories"
+      "https://homefix-production-0bc9.up.railway.app/admin/categories"
     );
 
     const data = await res.json();

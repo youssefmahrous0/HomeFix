@@ -23,7 +23,7 @@ const serviceMap = {
 };
 
 useEffect(() => {
-  fetch("http://https://homefix-production-0bc9.up.railway.app/providers/")
+  fetch("https://homefix-production-0bc9.up.railway.app/providers/")
     .then(res => res.json())
     .then(data => {
       setProviders(data.data || []);

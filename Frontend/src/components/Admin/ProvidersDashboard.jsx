@@ -52,7 +52,7 @@ export default function ProvidersDashboard() {
     try {
 
       const res = await axios.get(
-        "http://https://homefix-production-0bc9.up.railway.app/admin/providers"
+        "https://homefix-production-0bc9.up.railway.app/admin/providers"
       );
 
       setProviders(res.data.providers || []);
@@ -67,7 +67,7 @@ export default function ProvidersDashboard() {
     try {
 
       const res = await axios.get(
-        `http://https://homefix-production-0bc9.up.railway.app/admin/providers/${id}`
+        `https://homefix-production-0bc9.up.railway.app/admin/providers/${id}`
       );
 
       setProviderDetails(res.data.provider);
@@ -85,7 +85,7 @@ export default function ProvidersDashboard() {
     try {
 
       await axios.post(
-        "http://https://homefix-production-0bc9.up.railway.app/admin/providers",
+        "https://homefix-production-0bc9.up.railway.app/admin/providers",
         formData
       );
 
@@ -112,7 +112,7 @@ export default function ProvidersDashboard() {
   try {
 
     await axios.put(
-      `http://https://homefix-production-0bc9.up.railway.app/admin/providers/${id}/verify`
+      `https://homefix-production-0bc9.up.railway.app/admin/providers/${id}/verify`
     );
 
     fetchProviders();
@@ -127,7 +127,7 @@ export default function ProvidersDashboard() {
   try {
 
     await axios.put(
-      `http://https://homefix-production-0bc9.up.railway.app/admin/providers/${id}/status`,
+      `https://homefix-production-0bc9.up.railway.app/admin/providers/${id}/status`,
       { status }
     );
 
@@ -189,7 +189,7 @@ const handleUpdateProvider = async () => {
   try {
 
     await axios.put(
-      `http://https://homefix-production-0bc9.up.railway.app/admin/providers/${selectedProvider.id}`,
+      `https://homefix-production-0bc9.up.railway.app/admin/providers/${selectedProvider.id}`,
       selectedProvider
     );
 

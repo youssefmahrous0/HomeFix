@@ -51,7 +51,7 @@ export default function AdminComplaints() {
     try {
 
       const res = await axios.get(
-        "http://https://homefix-production-0bc9.up.railway.app/admin/complaints"
+        "https://homefix-production-0bc9.up.railway.app/admin/complaints"
       );
 
       setComplaints(
