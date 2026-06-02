@@ -109,12 +109,12 @@ def google_login():
 def google_callback():
 
     if not google.authorized:
-        return redirect("http://localhost:5173/login")
+        return redirect("https://home-fix-zeta.vercel.app")
 
     resp = google.get("/oauth2/v2/userinfo")
 
     if not resp.ok:
-        return redirect("http://localhost:5173/login")
+        return redirect("https://home-fix-zeta.vercel.app")
 
     info = resp.json()
 
@@ -129,7 +129,7 @@ def google_callback():
     if user:
         jwt_token = generate_token(user)
         return redirect(
-            f"http://localhost:5173/social-success?token={jwt_token}"
+            f"https://home-fix-zeta.vercel.app/social-success?token={jwt_token}"
         )
 
     
@@ -148,7 +148,7 @@ def google_callback():
     jwt_token = generate_token(user)
 
     return redirect(
-        f"http://localhost:5173/social-success?token={jwt_token}"
+        f"https://home-fix-zeta.vercel.app/social-success?token={jwt_token}"
     )
     
     
@@ -166,7 +166,7 @@ def facebook_after_login():
     resp = facebook.get("/me?fields=id,name,email,picture")
 
     if not resp.ok:
-        return redirect("http://localhost:5173/login")
+        return redirect("https://home-fix-zeta.vercel.app")
 
     info = resp.json()
 
@@ -194,5 +194,5 @@ def facebook_after_login():
     token = generate_token(user)
 
     return redirect(
-        f"http://localhost:5173/social-success?token={token}"
+        f"https://home-fix-zeta.vercel.app/social-success?token={token}"
     )

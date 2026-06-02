@@ -1,7 +1,8 @@
 import os
 from dotenv import load_dotenv
 load_dotenv()
-os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+if os.getenv("FLASK_ENV") == "development":
+    os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 from flask_jwt_extended import JWTManager
 from flask import Flask
 import sys
@@ -62,6 +63,10 @@ facebook_bp = make_facebook_blueprint(
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "super-secret-key"  # 🔥 ده الحل
+from werkzeug.middleware.proxy_fix import ProxyFix
+
+app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
+app.config["PREFERRED_URL_SCHEME"] = "https"
 
 # ======================
 # Config (الأول)
