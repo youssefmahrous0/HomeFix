@@ -5,4 +5,5 @@ Flask-SocketIO
 gunicorn
 eventlet
 pyodbc
+psycopg2-binary
 python-dotenv
