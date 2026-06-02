@@ -20,7 +20,7 @@ const handleFavorite = async () => {
     return;
   }
 
-  const res = await fetch("http://127.0.0.1:5000/favorite/toggle", {
+  const res = await fetch("http://https://homefix-production-0bc9.up.railway.app/favorite/toggle", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -39,13 +39,13 @@ const handleFavorite = async () => {
   const user = JSON.parse(localStorage.getItem("user"));
 
   // 🧾 1. جلب بيانات الفني
-  fetch(`http://127.0.0.1:5000/providers/${id}`)
+  fetch(`http://https://homefix-production-0bc9.up.railway.app/providers/${id}`)
     .then(res => res.json())
     .then(data => setProvider(data));
 
   // ❤️ 2. check لو في المفضلة
   if (user) {
-    fetch("http://127.0.0.1:5000/favorite/check", {
+    fetch("http://https://homefix-production-0bc9.up.railway.app/favorite/check", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

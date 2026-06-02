@@ -14,7 +14,7 @@ import {
 import AdminSidebar from "./AdminSidebar";
 
 const API_URL =
-  "http://127.0.0.1:5000/admin/orders";
+  "http://https://homefix-production-0bc9.up.railway.app/admin/orders";
 
 export default function AdminOrders() {
 

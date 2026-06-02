@@ -68,7 +68,7 @@ const handleSubmit = async (e) => {
 };
 
 const handleLogin = async () => {
-  const res = await fetch("http://127.0.0.1:5000/login", {
+  const res = await fetch("http://https://homefix-production-0bc9.up.railway.app/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -58,7 +58,7 @@ const filteredUsers = users.filter((user) => {
   try {
 
     await axios.put(
-      `http://127.0.0.1:5000/admin/users/${id}`,
+      `http://https://homefix-production-0bc9.up.railway.app/admin/users/${id}`,
       { status }
     );
 
@@ -74,7 +74,7 @@ const filteredUsers = users.filter((user) => {
     try {
 
       const res = await axios.get(
-        "http://127.0.0.1:5000/admin/users"
+        "http://https://homefix-production-0bc9.up.railway.app/admin/users"
       );
 
       setUsers(res.data.users || []);
@@ -89,7 +89,7 @@ const filteredUsers = users.filter((user) => {
     try {
 
       await axios.post(
-        "http://127.0.0.1:5000/admin/users",
+        "http://https://homefix-production-0bc9.up.railway.app/admin/users",
         formData
       );
 
@@ -115,7 +115,7 @@ const filteredUsers = users.filter((user) => {
   try {
 
     await axios.put(
-      `http://127.0.0.1:5000/admin/users/${selectedUser.id}`,
+      `http://https://homefix-production-0bc9.up.railway.app/admin/users/${selectedUser.id}`,
       selectedUser
     );
 
