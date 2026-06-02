@@ -93,6 +93,7 @@ from models.complaint import Complaint
 from models.advertisement import Advertisement
 from models.admin_settings import AdminSettings
 from models.contact import Contact
+from models.search import search
 
 db.init_app(app)
 socketio.init_app(app)
