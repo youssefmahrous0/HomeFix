@@ -9,7 +9,7 @@ export default function BookingSuccess() {
   const [booking, setBooking] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/booking/${id}`, {
+    axios.get(`homefix-production-0bc9.up.railway.app/booking/${id}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
       }

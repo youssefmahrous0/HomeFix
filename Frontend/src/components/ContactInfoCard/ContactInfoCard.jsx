@@ -6,7 +6,7 @@ export default function ContactInfoCard() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/contact-info")
+    fetch("homefix-production-0bc9.up.railway.app/contact-info")
       .then(res => res.json())
       .then(data => setData(data));
   }, []);

@@ -23,7 +23,7 @@ export default function BookingPage() {
   });
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/providers/${id}`)
+    axios.get(`homefix-production-0bc9.up.railway.app/providers/${id}`)
       .then(res => setProvider(res.data))
       .catch(err => console.log(err));
   }, [id]);
@@ -41,7 +41,7 @@ export default function BookingPage() {
     const formattedDate = new Date(form.date).toISOString().split("T")[0];
 
 
-    axios.post("http://localhost:5000/bookings", {
+    axios.post("homefix-production-0bc9.up.railway.app/bookings", {
       provider_id,
       service: form.service,
       date: form.date,

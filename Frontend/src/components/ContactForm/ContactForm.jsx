@@ -26,7 +26,7 @@ export default function ContactForm() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/contact", {
+      const res = await fetch("homefix-production-0bc9.up.railway.app/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

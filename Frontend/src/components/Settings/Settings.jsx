@@ -14,7 +14,7 @@ function Settings() {
   const [loaded, setLoaded] = useState(false);
 
 useEffect(() => {
-  axios.get("http://localhost:5000/settings", {
+  axios.get("homefix-production-0bc9.up.railway.app/settings", {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("token"),
     },
@@ -31,7 +31,7 @@ useEffect(() => {
 useEffect(() => {
   if (!loaded) return;
 
-  axios.put("http://localhost:5000/settings/notifications", {
+  axios.put("homefix-production-0bc9.up.railway.app/settings/notifications", {
     email_notifications: emailNotif,
     sms_notifications: smsNotif,
     instant_notifications: instantNotif,
@@ -52,7 +52,7 @@ const [showDeleteModal, setShowDeleteModal] = useState(false);
 const changePassword = () => {
   if (newPass !== confirm) return alert("كلمة المرور غير متطابقة");
 
-  axios.put("http://localhost:5000/settings/password", {
+  axios.put("homefix-production-0bc9.up.railway.app/settings/password", {
     current_password: current,
     new_password: newPass
   }, {
@@ -65,7 +65,7 @@ const changePassword = () => {
 
   const deleteAccount = () => {
 
-  axios.delete("http://localhost:5000/settings/delete", {
+  axios.delete("homefix-production-0bc9.up.railway.app/settings/delete", {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("token"),
     },

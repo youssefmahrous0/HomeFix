@@ -11,7 +11,7 @@ export default function ServiceOrderDetailsPage() {
 
   useEffect(() => {
 
-    axios.get(`http://localhost:5000/booking/${id}`, {
+    axios.get(`homefix-production-0bc9.up.railway.app/booking/${id}`, {
       headers: {
         Authorization:
           "Bearer " + localStorage.getItem("token"),
@@ -485,7 +485,7 @@ export default function ServiceOrderDetailsPage() {
   try {
 
     await axios.put(
-      `http://localhost:5000/cancel/${booking.id}`,
+      `homefix-production-0bc9.up.railway.app/cancel/${booking.id}`,
       {},
       {
         headers: {

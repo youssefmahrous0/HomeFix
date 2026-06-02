@@ -49,7 +49,7 @@ const handleSubmit = async (e) => {
 
 
   try {
-    const res = await fetch("http://localhost:5000/api/auth/register", {
+    const res = await fetch("homefix-production-0bc9.up.railway.app/api/auth/register", {
   method: "POST",
   body: data
 });

@@ -30,7 +30,7 @@ export default function ChatBot() {
     try {
 
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/chat", {
+      const res = await fetch("homefix-production-0bc9.up.railway.app/api/chat", {
        method: "POST",
        headers: {
          "Content-Type": "application/json",

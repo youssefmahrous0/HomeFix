@@ -162,7 +162,7 @@ export default function TrackingPage() {
 
   // 🔥 socket
   useEffect(() => {
-  const socket = io("http://localhost:5000");
+  const socket = io("homefix-production-0bc9.up.railway.app");
   const user_id = localStorage.getItem("user_id"); // لازم يكون متخزن
   // 🔥 أهم سطر
    socket.emit("join_booking", { booking_id: id });
@@ -258,7 +258,7 @@ useEffect(() => {
 
   // 🔥 get booking
   useEffect(() => {
-  axios.get(`http://localhost:5000/booking/${id}`, {
+  axios.get(`homefix-production-0bc9.up.railway.app/booking/${id}`, {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("token"),
     },
@@ -465,7 +465,7 @@ if (!result.isConfirmed) return;
 
     try {
   await axios.put(
-    `http://localhost:5000/cancel/${id}`,
+    `homefix-production-0bc9.up.railway.app/cancel/${id}`,
     {},
     {
       headers: {

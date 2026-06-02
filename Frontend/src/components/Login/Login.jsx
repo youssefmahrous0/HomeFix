@@ -84,12 +84,12 @@ const handleLogin = async () => {
 };
 
 const handleGoogleLogin = () => {
-  window.location.href = "http://localhost:5000/login/google";
+  window.location.href = "homefix-production-0bc9.up.railway.app/login/google";
 };
 
 
 const handleFacebookLogin = () => {
-  window.location.href = "http://localhost:5000/auth/facebook";
+  window.location.href = "homefix-production-0bc9.up.railway.app/auth/facebook";
 };
 
   return (
