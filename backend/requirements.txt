@@ -16,3 +16,4 @@ google-auth-oauthlib
 stripe
 pytz
 pydantic-settings
+openai
