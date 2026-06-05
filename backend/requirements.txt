@@ -6,7 +6,6 @@ Flask-Cors
 Flask-Dance
 Flask-Limiter
 gunicorn
-eventlet
 python-dotenv
 psycopg2-binary
 pydantic
