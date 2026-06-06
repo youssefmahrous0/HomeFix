@@ -124,7 +124,8 @@ def maintenance_mode():
 
     # السماح بمسارات الأدمن
     allowed_paths = [
-        "/admin"
+         request.path.startswith("/admin")
+        or request.path.startswith("/api")
     ]
 
     if any(request.path.startswith(path) for path in allowed_paths):
