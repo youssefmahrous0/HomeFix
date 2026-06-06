@@ -11,6 +11,7 @@ from flask_socketio import join_room
 import threading
 from extensions import socketio
 import time
+from flask import jsonify, request
 from extensions import db
 from routes.auth_routes import auth_bp
 from routes.service_routes import service_bp
@@ -98,6 +99,8 @@ from models.complaint import Complaint
 from models.advertisement import Advertisement
 from models.admin_settings import AdminSettings
 from models.contact import Contact
+from models.admin_settings import AdminSettings
+
 
 db.init_app(app)
 socketio.init_app(app)
@@ -110,6 +113,29 @@ CORS(app)
 
 from flask_jwt_extended import JWTManager
 jwt = JWTManager(app)
+
+@app.before_request
+def maintenance_mode():
+
+    settings = AdminSettings.query.first()
+
+    if not settings:
+        return
+
+    # السماح بمسارات الأدمن
+    allowed_paths = [
+        "/admin"
+    ]
+
+    if any(request.path.startswith(path) for path in allowed_paths):
+        return
+
+    if settings.maintenance_enabled:
+        return jsonify({
+            "maintenance": True,
+            "message": settings.maintenance_message
+            or "التطبيق تحت الصيانة حالياً"
+        }), 503
 
 # ======================
 # Routes
