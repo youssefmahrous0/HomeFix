@@ -117,18 +117,17 @@ jwt = JWTManager(app)
 @app.before_request
 def maintenance_mode():
 
+    # السماح بطلبات OPTIONS الخاصة بـ CORS
+    if request.method == "OPTIONS":
+        return
+
     settings = AdminSettings.query.first()
 
     if not settings:
         return
 
     # السماح بمسارات الأدمن
-    allowed_paths = [
-         request.path.startswith("/admin")
-        or request.path.startswith("/api")
-    ]
-
-    if any(request.path.startswith(path) for path in allowed_paths):
+    if request.path.startswith("/admin"):
         return
 
     if settings.maintenance_enabled:
@@ -137,7 +136,6 @@ def maintenance_mode():
             "message": settings.maintenance_message
             or "التطبيق تحت الصيانة حالياً"
         }), 503
-
 # ======================
 # Routes
 # ======================
