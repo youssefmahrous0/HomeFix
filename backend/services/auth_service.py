@@ -12,6 +12,7 @@ from flask_jwt_extended import create_access_token
 from google.oauth2 import id_token
 from google.auth.transport import requests
 from werkzeug.utils import secure_filename
+from models.admin_settings import AdminSettings
 
 
 # =========================
@@ -133,6 +134,18 @@ def login_user(data):
         return {
             "error": "تم تعطيل حسابك، تواصل مع الإدارة"
         }, 403
+        
+    # وضع الصيانة
+    settings = AdminSettings.query.first()
+
+    if (
+      settings
+     and settings.maintenance_enabled
+      and user.user_type != "admin"
+    ):
+     return {
+        "error": "التطبيق تحت الصيانة حالياً"
+    }, 503
 
     token = create_access_token(identity=str(user.id))
 
