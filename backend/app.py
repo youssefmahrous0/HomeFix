@@ -125,10 +125,9 @@ def maintenance_mode():
     if not settings:
         return
 
-    # السماح بلوحة الأدمن وكل APIs الخاصة بها
     if (
         request.path.startswith("/admin")
-        or "/admin" in request.path
+        or request.path == "/api/auth/login"
     ):
         return
 
