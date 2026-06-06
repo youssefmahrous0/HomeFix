@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   Bell,
   Globe,
@@ -1099,11 +1100,11 @@ export default function SettingsDashboard() {
       newSettings
     );
 
-    alert(
-      enabled
-        ? "تم تفعيل وضع الصيانة"
-        : "تم إلغاء وضع الصيانة"
-    );
+    if (enabled) {
+      toast.success("تم تفعيل وضع الصيانة");
+    } else {
+      toast.error("تم إلغاء وضع الصيانة");
+    }
   } catch (err) {
     console.log(err);
   }
