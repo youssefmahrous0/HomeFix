@@ -117,7 +117,6 @@ jwt = JWTManager(app)
 @app.before_request
 def maintenance_mode():
 
-    # السماح بطلبات OPTIONS الخاصة بـ CORS
     if request.method == "OPTIONS":
         return
 
@@ -126,8 +125,11 @@ def maintenance_mode():
     if not settings:
         return
 
-    # السماح بمسارات الأدمن
-    if request.path.startswith("/admin"):
+    # السماح بلوحة الأدمن وكل APIs الخاصة بها
+    if (
+        request.path.startswith("/admin")
+        or "/admin" in request.path
+    ):
         return
 
     if settings.maintenance_enabled:
