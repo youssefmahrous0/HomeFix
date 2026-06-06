@@ -1080,13 +1080,34 @@ export default function SettingsDashboard() {
       <input
         type="checkbox"
         checked={settings.maintenance.enabled}
-        onChange={(e) =>
-          updateField(
-            "maintenance",
-            "enabled",
-            e.target.checked
-          )
-        }
+        onChange={async (e) => {
+  const enabled = e.target.checked;
+
+  const newSettings = {
+    ...settings,
+    maintenance: {
+      ...settings.maintenance,
+      enabled,
+    },
+  };
+
+  setSettings(newSettings);
+
+  try {
+    await axios.put(
+      "https://homefix-production-0bc9.up.railway.app/admin/settings",
+      newSettings
+    );
+
+    alert(
+      enabled
+        ? "تم تفعيل وضع الصيانة"
+        : "تم إلغاء وضع الصيانة"
+    );
+  } catch (err) {
+    console.log(err);
+  }
+}}
         className="sr-only peer"
       />
 
